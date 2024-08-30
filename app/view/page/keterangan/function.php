@@ -4,18 +4,17 @@ if(isset($_GET['info'])){
 ?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Informasi </strong>
-    <p>anda berhasil menambahkan karyawan baru ...</p>
-    <button type="button" class="btn-close" onclick="location.href = '../ui/header.php?aksi=pendaftaran-karyawan'"
+    <p>anda sudah membuat laporan keterangan !</p>
+    <button type="button" class="btn-close" onclick="location.href = '../ui/header.php?aksi=keterangan-karyawan'"
         data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php
-    }else if($_GET['info'] == "ubahdata"){
+    }else if($_GET['info'] == "dialog"){
 ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Informasi </strong>
-    <p>anda berhasil mengubah data pribadi ...</p>
-    <button type="button" class="btn-close"
-        onclick="location.href = '../ui/header.php?aksi=ubah-karyawan&id=<?php echo $_SESSION['id']?>'"
+    <p>anda sudah membuat laporan keterangan sebelumnya !</p>
+    <button type="button" class="btn-close" onclick="location.href = '../ui/header.php?aksi=keterangan-karyawan'"
         data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php        
@@ -23,8 +22,8 @@ if(isset($_GET['info'])){
 ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Informasi </strong>
-    <p>anda gagal menambahkan karyawan baru ...</p>
-    <button type="button" class="btn-close" onclick="location.href = '../ui/header.php?aksi=pendaftaran-karyawan'"
+    <p>maaf anda belum isi semua form surat keterangan !</p>
+    <button type="button" class="btn-close" onclick="location.href = '../ui/header.php?aksi=keterangan-karyawan'"
         data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php        

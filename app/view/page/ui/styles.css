@@ -33,6 +33,7 @@ body {
 .card-title {
     font-size: 18px;
     font-style: normal;
+    font-weight: 500;
     font-family: 'Poppins';
     letter-spacing: 1px;
 }
@@ -55,7 +56,7 @@ body {
     border-spacing: 0;
     border: 1px;
     border-style: ridge;
-    width: 1280px;
+    width: 1300px;
 }
 
 .table-layout-buku {

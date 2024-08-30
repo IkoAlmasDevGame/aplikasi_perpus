@@ -7,6 +7,7 @@
         <?php
             session_start();
             require_once("../../../config/auth.php");
+            require_once("../../../config/config.php");
             require_once("../route/route.php");
         ?>
         <title>Dashboard</title>

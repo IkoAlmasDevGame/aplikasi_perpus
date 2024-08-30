@@ -1,0 +1,32 @@
+[
+    {
+        "id_akun": 2,
+        "username": "florajkt48",
+        "email": "flora_shafiq@perpus.com",
+        "nama": "flora shafiq",
+        "password": "ff92dc7dbfe0415bcbfdb9b0436e4406",
+        "repassword": "ff92dc7dbfe0415bcbfdb9b0436e4406",
+        "role": "admin",
+        "foto": "flora_shafiq.jpg"
+    },
+    {
+        "id_akun": 3,
+        "username": "freyajkt48",
+        "email": "freya_jayawardana@perpus.com",
+        "nama": "Freya Jayawardana",
+        "password": "2755403c4b35017491382a0f3595df3c",
+        "repassword": "2755403c4b35017491382a0f3595df3c",
+        "role": "admin",
+        "foto": "freya_jayawardana.jpg"
+    },
+    {
+        "id_akun": 4,
+        "username": "aurhel_alana",
+        "email": "aurheljkt48@perpus.com",
+        "nama": "aurhel alana",
+        "password": "c131b8d71a9e92dc3e7287b714928f25",
+        "repassword": "c131b8d71a9e92dc3e7287b714928f25",
+        "role": "admin",
+        "foto": "aurhel_alana.jpg"
+    }
+]

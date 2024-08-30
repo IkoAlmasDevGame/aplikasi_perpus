@@ -60,24 +60,46 @@ if($_SESSION['role'] == "superadmin"){
         </li><!-- End Blank Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" aria-current="page" href="">
+            <a class="nav-link collapsed" aria-current="page" href="?aksi=pendaftaran-karyawan">
                 <i class="fa fa-registered fa-1x"></i>
                 <span>Pendaftaran Karyawan</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" aria-current="page" href="">
+            <a class="nav-link collapsed" aria-current="page" href="?page=karyawan">
                 <i class="fa fa-database fa-1x"></i>
                 <span>Data Master Karyawan</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" aria-current="page" href=""
+            <a class="nav-link collapsed" aria-current="page" href="?page=absensi">
+                <i class="fa fa-bookmark fa-1x"></i>
+                <span>Data Absensi Karyawan</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" aria-current="page" href="?page=keterangan">
+                <i class="fa fa-book fa-1x"></i>
+                <span>Keterangan Karyawan</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" aria-current="page" href="?aksi=ubah-karyawan&id=<?php echo $_SESSION['id']?>"
                 onclick="return confirm('Apakah anda ingin edit profile anda ?')">
                 <i class="fa fa-user-edit fa-1x"></i>
                 <span>Edit Profile</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" aria-current="page" href="?page=settings"
+                onclick="return confirm('Apakah anda ingin edit pengturan Perpustakaan ?')">
+                <i class="fa fa-gears fa-1x"></i>
+                <span>Pengaturan</span>
             </a>
         </li>
 
@@ -124,7 +146,7 @@ if($_SESSION['role'] == "superadmin"){
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" role="button"
                         data-bs-toggle="dropdown" aria-controls="dropdown">
                         <?php $baseFile = mysqli_fetch_array($konfigs->query("SELECT * FROM users WHERE email = '$_SESSION[email]'")); ?>
-                        <img src="../../../../assets/karyawan/<?php echo $baseFile['foto']; ?>" width="32"
+                        <img src="../../../../assets/admin/<?php echo $baseFile['foto']; ?>" width="32"
                             alt="<?php echo $_SESSION['nama']?>" class="rounded-3 img-circle img-responsive">
                         <span class="d-none d-md-block dropdown-toggle ps-2"></span>
                     </a><!-- End Profile Iamge Icon -->
@@ -149,7 +171,101 @@ if($_SESSION['role'] == "superadmin"){
 
     </header>
     <!-- ======= Header ======= -->
-    <?php
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page" href="?page=beranda">
+                    <i class="fa fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Blank Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page" href="?aksi=absensi-karyawan">
+                    <i class="fa fa-bookmark fa-1x"></i>
+                    <span>Absensi Karyawan</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page" href="?aksi=keterangan-karyawan">
+                    <i class="fa fa-book-open fa-1x"></i>
+                    <span>Keterangan Karyawan</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page" href="?page=anggota">
+                    <i class="fa fa-registered fa-1x"></i>
+                    <span>Pendaftaran Anggota</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page" href="?page=buku">
+                    <i class="fa fa-book-reader fa-1x"></i>
+                    <span>Data Master Buku</span>
+                </a>
+            </li>
+
+            <li class="nav-item" hidden>
+                <a class="nav-link collapsed" aria-current="page" href="">
+                    <i class="fa fa-location-arrow fa-1x"></i>
+                    <span>Kategori Rak Buku</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page" href="?page=peminjaman">
+                    <i class="fa fa-book fa-1x"></i>
+                    <span>Peminjaman Buku</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page" href="?page=pengembalian">
+                    <i class="fa fa-book-reader fa-1x"></i>
+                    <span>Pengembalian Buku</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page"
+                    href="?aksi=ubah-karyawan&id=<?php echo $_SESSION['id']?>"
+                    onclick="return confirm('Apakah anda ingin edit profile anda ?')">
+                    <i class="fa fa-user-edit fa-1x"></i>
+                    <span>Edit Profile</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" aria-current="page" href="?page=keluar"
+                    onclick="return confirm('Apakah anda ingin logout ?')">
+                    <i class="fa fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li><!-- End Blank Page Nav -->
+        </ul>
+    </aside><!-- End Sidebar-->
+    <!-- ======= Sidebar ======= -->
+
+    <main id="main" class="main">
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                    <div class="row">
+
+                    </div>
+
+                </div><!-- End Right side columns -->
+
+            </div>
+        </section>
+        <?php
 }else{
     echo "<script>document.location.href = '../../auth/index.php'</script>";
     exit;

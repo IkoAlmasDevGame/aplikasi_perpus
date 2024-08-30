@@ -1,0 +1,22 @@
+[
+    {
+        "id_anggota": 1,
+        "nim": 13190177,
+        "nama_anggota": "Iko Almas Qistan",
+        "tempat_lahir": "Jakarta",
+        "tanggal_lahir": "1999-05-25",
+        "jenis_kelamin": "L",
+        "prodi_kuliah": "Teknik Komputer &amp; Informatika",
+        "status_anggota": "1"
+    },
+    {
+        "id_anggota": 2,
+        "nim": 13190377,
+        "nama_anggota": "Arham Maulana",
+        "tempat_lahir": "Jakarta",
+        "tanggal_lahir": "2002-07-20",
+        "jenis_kelamin": "L",
+        "prodi_kuliah": "Teknik Komputer &amp; Informatika",
+        "status_anggota": "1"
+    }
+]

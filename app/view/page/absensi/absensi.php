@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo $title ?></title>
         <?php 
-            if($_SESSION['role'] == 'admin'){
+            if($_SESSION['role'] == "superadmin"){
                 require_once("../ui/header.php");
                 require_once("../../../database/koneksi.php");
             }else{
@@ -17,7 +17,9 @@
     </head>
 
     <body>
-        <?php require_once("../ui/sidebar.php") ?>
+        <?php 
+            require_once("../ui/sidebar.php");
+        ?>
         <div class="panel panel-body container bg-body-tertiary">
             <div class="panel-heading">
                 <h4 class="panel-title"><?php echo $title ?></h4>
@@ -29,7 +31,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb breadcrumb-item">
-                        <a href="?page=pengembalian" aria-current="page" aria-label="Data Master"
+                        <a href="?page=absensi" aria-current="page" aria-label="Data Master"
                             class="text-decoration-none text-primary">
                             <?php echo $title ?>
                         </a>
@@ -37,9 +39,13 @@
                 </div>
             </div>
         </div>
-        <div class="card container mb-4">
-            <div class="card-header">
-                <h4 class="card-title"><?php echo $title ?></h4>
+        <div class="card container">
+            <div class="card-header py-2">
+                <h4 class="card-title">Master Absensi Karyawan</h4>
+                <a href="?page=absensi" aria-current="page" class="btn btn-info">
+                    <i class="fa fa-refresh fa-1x"></i>
+                    <span>Refresh Page</span>
+                </a>
             </div>
             <div class="card-body mt-1">
                 <div class="container">
@@ -58,38 +64,35 @@
                             <table class="table-layout" id="example1">
                                 <thead>
                                     <tr>
-                                        <th class="text-center table-layout-2">No</th>
-                                        <th class="text-center table-layout-2">NIM Anggota</th>
-                                        <th class="text-center table-layout-2">Nama Anggota</th>
-                                        <th class="text-center table-layout-2">Judul Buku</th>
-                                        <th class="text-center table-layout-2">Tanggal Pinjam</th>
-                                        <th class="text-center table-layout-2">Tanggal Kembali</th>
-                                        <th class="text-center table-layout-2">Status</th>
+                                        <th class="table-layout-2 text-center">No.</th>
+                                        <th class="table-layout-2 text-center">Nama Karyawan</th>
+                                        <th class="table-layout-2 text-center">Tanggal Sekarang</th>
+                                        <th class="table-layout-2 text-center">Jam Absensi</th>
+                                        <th class="table-layout-2 text-center">Jam Kerja</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
                                         $no = 1;
-                                        $sql = $konfigs->query("SELECT transaksi.*, buku.id_buku, buku.judul_buku, anggota.nim, anggota.nama_anggota FROM transaksi LEFT JOIN buku ON transaksi.id_buku = buku.id_buku LEFT JOIN anggota ON transaksi.id_anggota = anggota.id_anggota WHERE transaksi.status = 'kembali' order by transaksi.id_transaksi asc") or die(mysqli_error($konfigs));
-                                        while($isi = mysqli_fetch_assoc($sql)){
-                                            $expTgl_pinjam = explode("-", $isi['tgl_pinjam']);
-                                            $expTgl_kembali = explode("-", $isi['tgl_kembali']);
+                                        $sql = "SELECT * FROM absensi order by id_absensi asc";
+                                        $data = $konfigs->query($sql);
+                                        while($pro = $data->fetch_array()){
                                     ?>
                                     <tr>
-                                        <td class="text-center table-layout-2"><?php echo $no; ?></td>
-                                        <td class="text-center table-layout-2"><?php echo $isi['nim']; ?></td>
-                                        <td class="text-center table-layout-2"><?php echo $isi['nama_anggota']; ?></td>
-                                        <td class="text-center table-layout-2" style="width: 140px; min-width: 100%;">
-                                            <?php echo $isi['judul_buku']; ?>
-                                        </td>
-                                        <td class="text-center table-layout-2">
-                                            <?php echo $expTgl_pinjam[2]."-".$expTgl_pinjam[1]."-".$expTgl_pinjam[0]; ?>
-                                        </td>
-                                        <td class="text-center table-layout-2">
-                                            <?php echo $expTgl_kembali[2]."-".$expTgl_kembali[1]."-".$expTgl_kembali[0]; ?>
-                                        </td>
-                                        <td class="text-center table-layout-2">
-                                            <?=$isi['status']; ?>
+                                        <td class="table-layout-2 text-center"><?php echo $no; ?></td>
+                                        <td class="table-layout-2 text-center"><?php echo $pro['nama'] ?></td>
+                                        <td class="table-layout-2 text-center"><?php echo $pro['tanggal_input'] ?></td>
+                                        <td class="table-layout-2 text-center"><?php echo $pro['jam'] ?></td>
+                                        <td class="table-layout-2 text-center">
+                                            <?php 
+                                                $select_jam = $konfigs->query("SELECT * FROM jam_masuk");
+                                                $jam_masuk = mysqli_fetch_array($select_jam);
+                                                if($pro['jam2'] > $jam_masuk['jam_masuk']){
+                                                    echo "<b style='color: red;'>telat</b>";
+                                                }else{
+                                                    echo "<b style='color: green;'>tepat waktu</b>";                                                    
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php
@@ -103,4 +106,6 @@
                 </div>
             </div>
         </div>
-        <?php require_once("../ui/footer.php") ?>
+        <?php 
+            require_once("../ui/footer.php");
+        ?>
