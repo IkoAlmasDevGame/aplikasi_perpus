@@ -32,3 +32,4 @@ Fitur - Fitur :
    - Pengembalian Buku,
    - Edit Profile,
    - Log out
+4. Link Cepat : http://localhost/aplikasi_perpus/index.php => nanti tujuan link ini ke http://localhost/aplikasi_perpus/app/view/auth/index.php
