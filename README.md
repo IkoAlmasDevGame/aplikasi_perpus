@@ -10,8 +10,8 @@ Image :
 
 Fitur - Fitur :
 1. Khusus Fitur Login :
-   di bawah ini untuk halaman superadmin.
-   username / email (superadmin) = superadmin
+   di bawah ini untuk halaman superadmin.<br>
+   username / email (superadmin) = superadmin <br>
    password / kata sandi = superadmin
 2. Halaman Superadmin Terdapat :
    - (Gambar Member JKT48 - Indah JKT48).
