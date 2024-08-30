@@ -121,6 +121,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_akun`, `username`, `email`, `nama`, `password`, `repassword`, `role`, `foto`) VALUES
+(1, 'superadmin', 'superadmin@perpus.com', 'indah cahya nabila', '17c4520f6cfd1ab53d8745e84681eb49', '17c4520f6cfd1ab53d8745e84681eb49', 'superadmin', 'indah_cahya.jpg');
+
+--
 -- Indexes for dumped tables
 --
 
