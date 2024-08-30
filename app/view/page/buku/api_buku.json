@@ -1,24 +1,2 @@
 [
-    {
-        "id_buku": 1,
-        "judul_buku": "rekayasa perangkat luank berorientasi objek php",
-        "pengarang_buku": "Ardiati Utami S",
-        "penerbit_buku": "Andi",
-        "tahun_terbit": "2021",
-        "isbn": "978-623-01-1788-6",
-        "jumlah_buku": "10",
-        "lokasi_buku": "Teknologi",
-        "tanggal_input": "2024-08-28"
-    },
-    {
-        "id_buku": 2,
-        "judul_buku": "Bahasa Pemograman Java",
-        "pengarang_buku": "Bambang Hariyanto",
-        "penerbit_buku": "Informatika Bandung",
-        "tahun_terbit": "2014",
-        "isbn": "978-602-1514-43-6",
-        "jumlah_buku": "10",
-        "lokasi_buku": "Teknologi",
-        "tanggal_input": "2024-08-28"
-    }
 ]
