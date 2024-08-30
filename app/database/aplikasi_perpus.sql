@@ -9,7 +9,7 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+07:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -55,17 +55,6 @@ CREATE TABLE `buku` (
   `lokasi_buku` varchar(64) NOT NULL,
   `foto` varchar(80) NOT NULL,
   `tanggal_input` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kategori_lokasi`
---
-
-CREATE TABLE `kategori_lokasi` (
-  `id_lokasi` int(11) NOT NULL,
-  `lokasi_buku` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -144,12 +133,6 @@ ALTER TABLE `buku`
   ADD PRIMARY KEY (`id_buku`);
 
 --
--- Indexes for table `kategori_lokasi`
---
-ALTER TABLE `kategori_lokasi`
-  ADD PRIMARY KEY (`id_lokasi`);
-
---
 -- Indexes for table `sistem`
 --
 ALTER TABLE `sistem`
@@ -182,12 +165,6 @@ ALTER TABLE `anggota`
 --
 ALTER TABLE `buku`
   MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `kategori_lokasi`
---
-ALTER TABLE `kategori_lokasi`
-  MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sistem`
