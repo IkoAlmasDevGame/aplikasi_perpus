@@ -89,7 +89,7 @@ CREATE TABLE `transaksi` (
   `nim` int(11) NOT NULL,
   `tgl_pinjam` date NOT NULL,
   `tgl_kembali` date NOT NULL,
-  `status` enum('belum','sudah') NOT NULL
+  `status` enum('kembali','pinjam') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
