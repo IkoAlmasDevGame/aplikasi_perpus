@@ -9,3 +9,26 @@ Image :
 <br>
 
 Fitur - Fitur :
+1. Khusus Fitur Login :
+   di bawah ini untuk halaman superadmin.
+   username / email (superadmin) = superadmin
+   password / kata sandi = superadmin
+2. Halaman Superadmin Terdapat :
+   - (Gambar Member JKT48 - Indah JKT48).
+   - Pendaftaran Karyawan,
+   - Data Master Karyawan,
+   - Data Absensi Karyawan,
+   - Keterangan Karyawan,
+   - Edit Profile,
+   - Pengaturan (khsusu superadmin),
+   - Log out
+3. Halaman Admin Terdapat :
+   - (Gambar Member JKT48 - Freya JKT48).
+   - Absensi Karyawan,
+   - Keterangan Karyawan,
+   - Pendaftaran Anggota,
+   - Data Master Buku,
+   - Peminjaman Buku,
+   - Pengembalian Buku,
+   - Edit Profile,
+   - Log out
