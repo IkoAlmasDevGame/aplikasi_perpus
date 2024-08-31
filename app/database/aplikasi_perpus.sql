@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2024 at 05:57 AM
+-- Generation Time: Aug 31, 2024 at 04:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+07:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -20,6 +20,20 @@ SET time_zone = "+07:00";
 --
 -- Database: `aplikasi-perpus`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absensi`
+--
+
+CREATE TABLE `absensi` (
+  `id_absensi` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `tanggal_input` date NOT NULL,
+  `jam` text NOT NULL,
+  `jam2` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -53,9 +67,42 @@ CREATE TABLE `buku` (
   `isbn` varchar(64) NOT NULL,
   `jumlah_buku` varchar(64) NOT NULL,
   `lokasi_buku` varchar(64) NOT NULL,
-  `foto` varchar(80) NOT NULL,
   `tanggal_input` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jam_masuk`
+--
+
+CREATE TABLE `jam_masuk` (
+  `id_jam` int(11) NOT NULL,
+  `jam_masuk` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jam_masuk`
+--
+
+INSERT INTO `jam_masuk` (`id_jam`, `jam_masuk`) VALUES
+(1, '09:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `keterangan`
+--
+
+CREATE TABLE `keterangan` (
+  `id_keterangan` int(11) NOT NULL,
+  `nama` text NOT NULL,
+  `keterangan` text NOT NULL,
+  `alasan` text NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam` time NOT NULL,
+  `foto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -89,7 +136,7 @@ CREATE TABLE `transaksi` (
   `nim` int(11) NOT NULL,
   `tgl_pinjam` date NOT NULL,
   `tgl_kembali` date NOT NULL,
-  `status` enum('kembali','pinjam') NOT NULL
+  `status` enum('pinjam','kembali') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -114,11 +161,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_akun`, `username`, `email`, `nama`, `password`, `repassword`, `role`, `foto`) VALUES
-(1, 'superadmin', 'superadmin@perpus.com', 'indah cahya nabila', '17c4520f6cfd1ab53d8745e84681eb49', '17c4520f6cfd1ab53d8745e84681eb49', 'superadmin', 'indah_cahya.jpg');
+(1, 'superadmin', 'superadmin@perpus.com', 'indah cahya nabila', '17c4520f6cfd1ab53d8745e84681eb49', '17c4520f6cfd1ab53d8745e84681eb49', 'superadmin', 'indah_cahya.jpg'),
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `absensi`
+--
+ALTER TABLE `absensi`
+  ADD PRIMARY KEY (`id_absensi`);
 
 --
 -- Indexes for table `anggota`
@@ -131,6 +184,24 @@ ALTER TABLE `anggota`
 --
 ALTER TABLE `buku`
   ADD PRIMARY KEY (`id_buku`);
+
+--
+-- Indexes for table `jam_masuk`
+--
+ALTER TABLE `jam_masuk`
+  ADD PRIMARY KEY (`id_jam`);
+
+--
+-- Indexes for table `kategori_lokasi`
+--
+ALTER TABLE `kategori_lokasi`
+  ADD PRIMARY KEY (`id_lokasi`);
+
+--
+-- Indexes for table `keterangan`
+--
+ALTER TABLE `keterangan`
+  ADD PRIMARY KEY (`id_keterangan`);
 
 --
 -- Indexes for table `sistem`
@@ -155,16 +226,40 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `absensi`
+--
+ALTER TABLE `absensi`
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
+-- AUTO_INCREMENT for table `jam_masuk`
+--
+ALTER TABLE `jam_masuk`
+  MODIFY `id_jam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `kategori_lokasi`
+--
+ALTER TABLE `kategori_lokasi`
+  MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `keterangan`
+--
+ALTER TABLE `keterangan`
+  MODIFY `id_keterangan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sistem`
@@ -173,10 +268,16 @@ ALTER TABLE `sistem`
   MODIFY `id_sistem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
